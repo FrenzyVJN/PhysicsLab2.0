@@ -43,9 +43,23 @@ export default function laboratory() {
     const handleLightButtonClick = () => {
         setLightColor(!lightColor);
     }
-    const handleLightButtonClick1 = () => {
-        setWaveColor('green');
+    const handleLightButtonClick460 = () => {
+        setWaveColor('blue');
+    }
+    const handleLightButtonClick500 = () => {
+        setWaveColor('cyan');
       };
+    const handleLightButtonClick540 = () => {
+        setWaveColor('green');
+        
+    }
+    const handleLightButtonClick570 = () => {
+        setWaveColor('yellow');
+    }
+    const handleLightButtonClick635 = () => {
+        setWaveColor('red');
+    }
+
     return (
     <main className='flex w-screen h-screen flex-col items-center bg-gradient-to-b from-blue-950 to-blue-400'>
         <header className="flex fixed w-full items-center bg-gradient-to-tr from-blue-700 to-blue-400 text-white p-3">
@@ -73,11 +87,12 @@ export default function laboratory() {
             </div>
 
             <div className='inline-flex justify-center items-center py-2'>
-                <button className='bg-blue-500 px-4 text-white py-1 border border-black rounded-md mx-3'>500</button>
-                <button className='bg-blue-500 px-4 text-white py-1 border border-black rounded-md mx-3'>540</button>
-                <button className='bg-blue-500 px-4 text-white py-1 border border-black rounded-md mx-3'>570</button>
-                <button className='bg-blue-500 px-4 text-white py-1 border border-black rounded-md mx-3'>635</button>
-                <button className='bg-blue-500 text-white px-4 py-1 border border-black rounded-md mx-3'>460</button>
+                <button className='bg-blue-500 text-white px-4 py-1 border border-black rounded-md mx-3' onClick={handleLightButtonClick460}>460</button>
+                <button className='bg-blue-500 px-4 text-white py-1 border border-black rounded-md mx-3' onClick={handleLightButtonClick500}>500</button>
+                <button className='bg-blue-500 px-4 text-white py-1 border border-black rounded-md mx-3' onClick={handleLightButtonClick540}>540</button>
+                <button className='bg-blue-500 px-4 text-white py-1 border border-black rounded-md mx-3' onClick={handleLightButtonClick570}>570</button>
+                <button className='bg-blue-500 px-4 text-white py-1 border border-black rounded-md mx-3' onClick={handleLightButtonClick635}>635</button>
+                
             </div>    
             <button className='bg-blue-500 text-white px-4 py-1 border border-black rounded-md mx-3' onClick={handleLightButtonClick}>Light</button>
             

@@ -36,10 +36,19 @@ function Light({color}: {color:string}) {
         </div>
         )
 }
+function Btn1({label}: {label:string}) {
+    return(
+        <button className='bg-blue-500 text-white px-4 py-1 border border-black rounded-md mx-3'>{label}</button>
+    )
+}
 
 export default function laboratory() {
     const [lightColor, setLightColor] = useState(false); 
     const [waveColor, setWaveColor] = useState('white');
+    const [currentVoltage, setCurrentVoltage] = useState(false);
+    const handleToggle = () => {
+        setCurrentVoltage(!currentVoltage);
+    }
     const handleLightButtonClick = () => {
         setLightColor(!lightColor);
     }
@@ -64,10 +73,10 @@ export default function laboratory() {
     <main className='flex w-screen h-screen flex-col items-center bg-gradient-to-b from-blue-950 to-blue-400'>
         <header className="flex fixed w-full items-center bg-gradient-to-tr from-blue-700 to-blue-400 text-white p-3">
             <img className="flex h-16 w-1/8" src="https://media.discordapp.net/attachments/1164584907192938657/1170592901303124018/image_8.png?ex=65599a98&is=65472598&hm=74797897c1f89f538f522779938c1aa26fc4ddec605dc866cd0ac2ca1ae1e129&=&width=1440&height=398" alt="SNU Chennai" />
-            <h1 className="flex items-end h-1/3 mx-auto px-48 font-bold text-3xl">Physics Virtual Lab</h1>
+            <h1 className="flex h-1/3 mx-auto px-48 font-bold text-3xl">Physics Virtual Lab</h1>
             <a href='/' className='flex ml-auto mr-12 font-bold text-white text-2xl'>Home</a>
         </header>
-        <div className='flex my-auto mb-auto justify-center flex-col items-center border border-black px-20 rounded-2xl bg-gradient-to-t from-blue-950 to-blue-500 h-2/3 w-1/2'>
+        <div className='flex my-auto mb-1/2 justify-center flex-col items-center border border-black w-1/2 px-16 py-3 rounded-2xl bg-gradient-to-t from-blue-950 to-blue-500'>
             <h1 className=" text-3xl text-white font-sans font-semibold py-1">Planck’s Constant Setup</h1>
             <div className="flex h-fit w-full justify-center items-center px-15 border rounded-xl border-blue-200">
                 <div className="h-4/5 w-1/3 ml-3 mr-auto rounded-full" id="frame"><Light color={waveColor}/></div>
@@ -77,6 +86,8 @@ export default function laboratory() {
             <div className='inline-flex justify-center items-center'>
                 <div className='px-10'>
                     <Display value={10}/>
+                    <button className='flex mx-auto bg-inherit text-white text-center' onClick={handleToggle}><Btn1 label={currentVoltage?'Voltage':'Current'}/></button>
+                    
                 </div>
                 <div>
                     <Slider label="Light Intensity"/>

@@ -2,7 +2,7 @@
 import { useState } from 'react';
 
 
-
+{/*}
 function Slider({label}: {label: string}) {
     return(
         <form className='flex flex-col'>
@@ -11,7 +11,7 @@ function Slider({label}: {label: string}) {
         </form>
     )
 }
-
+*/}
 function Display({value}: {value:Number}) {
     return(
         <div className='h-fit w-fit border border-black rounded-2xl bg-gradient-to-t from-blue-400 to to-blue-950 justify-center mx-auto px-10 py-1'>
@@ -23,9 +23,23 @@ function Display({value}: {value:Number}) {
     )
 }
 
+function Slider({ label, value, onChange }: { label: string; value: number; onChange: (newValue: number) => void }) {
+    const handleSliderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      const newValue = parseInt(event.target.value, 10); // Parse the input value as an integer
+      onChange(newValue); // Call the onChange function with the new value
+    };
+  
+    return (
+      <form className="flex flex-col">
+        <label className="text-white font-thin" htmlFor={label}>{label}</label>
+        <input className="accent-white" type="range" id={label} name={label} min="0" max="50" value={value} onChange={handleSliderChange} />
+      </form>
+    );
+  }
+  
 function Light({color}: {color:string}) {
     const customStyles = {
-        backgroundColor: color, // Use the color prop as the background color
+        backgroundColor: color,
       };
     return(
         <div>
@@ -46,6 +60,9 @@ export default function laboratory() {
     const [lightColor, setLightColor] = useState(false); 
     const [waveColor, setWaveColor] = useState('white');
     const [currentVoltage, setCurrentVoltage] = useState(false);
+    const [userVoltage, setUserVoltage] = useState(0);
+    const [lightIntensity, setLightIntensity] = useState(0);
+    const [currentMultiplier, setCurrentMultiplier] = useState(0);
     const handleToggle = () => {
         setCurrentVoltage(!currentVoltage);
     }
@@ -59,8 +76,7 @@ export default function laboratory() {
         setWaveColor('cyan');
       };
     const handleLightButtonClick540 = () => {
-        setWaveColor('green');
-        
+        setWaveColor('green');    
     }
     const handleLightButtonClick570 = () => {
         setWaveColor('yellow');
@@ -68,12 +84,23 @@ export default function laboratory() {
     const handleLightButtonClick635 = () => {
         setWaveColor('red');
     }
-
+    const voltageAdjustor = (newValue : number) => {
+        console.log("Current Voltage - ",newValue);
+        setUserVoltage(newValue);
+    }
+    const handleLightIntensity = (newValue : number) => {
+        console.log("Light Intensity - ",newValue);
+        setLightIntensity(newValue);
+    }
+    const handleCurrentMultiplier = (newValue : number) => {
+        console.log("Current multiplier - "+newValue);
+        setCurrentMultiplier(newValue);
+    }
     return (
     <main className='flex w-screen h-screen flex-col items-center bg-gradient-to-b from-blue-950 to-blue-400'>
         <header className="flex fixed w-full items-center bg-gradient-to-tr from-blue-700 to-blue-400 text-white p-3">
             <img className="flex h-16 w-1/8" src="https://media.discordapp.net/attachments/1164584907192938657/1170592901303124018/image_8.png?ex=65599a98&is=65472598&hm=74797897c1f89f538f522779938c1aa26fc4ddec605dc866cd0ac2ca1ae1e129&=&width=1440&height=398" alt="SNU Chennai" />
-            <h1 className="flex h-1/3 mx-auto px-48 font-bold text-3xl">Physics Virtual Lab</h1>
+            <h1 className="flex h-1/3 mx-auto font-bold text-3xl mr-32">Physics Virtual Lab</h1>
             <a href='/' className='flex ml-auto mr-12 font-bold text-white text-2xl'>Home</a>
         </header>
         <div className='flex my-auto mb-1/2 justify-center flex-col items-center border border-black w-1/2 px-16 py-3 rounded-2xl bg-gradient-to-t from-blue-950 to-blue-500'>
@@ -90,9 +117,9 @@ export default function laboratory() {
                     
                 </div>
                 <div>
-                    <Slider label="Light Intensity"/>
-                    <Slider label="Current Multiplier"/>
-                    <Slider label="Voltage Adjustor"/>
+                    <Slider label="Light Intensity" value={lightIntensity} onChange={handleLightIntensity}/>
+                    <Slider label="Current Multiplier" value={currentMultiplier} onChange={handleCurrentMultiplier} />
+                    <Slider label="Voltage Adjustor" value={userVoltage} onChange={voltageAdjustor} />
                 </div>
                 
             </div>

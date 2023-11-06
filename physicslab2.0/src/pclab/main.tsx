@@ -12,10 +12,10 @@ function Slider({label}: {label: string}) {
     )
 }
 */}
-function Display({value}: {value:Number}) {
+function Display({value, label}: {value:Number ; label:string}) {
     return(
-        <div className='h-fit w-fit border border-black rounded-2xl bg-gradient-to-t from-blue-400 to to-blue-950 justify-center mx-auto px-10 py-1'>
-            <h1 className='text-2xl text-white'>Display</h1>
+        <div className='h-fit w-fit border border-black rounded-2xl bg-gradient-to-t from-blue-400 to to-blue-950 justify-center mx-auto px-5 py-1'>
+            <h1 className='text-2xl text-white'>{label}</h1>
             <div className='justify-center text-center text-white text-4xl text-bold'>
                 <h3>{String(value)}</h3>
             </div>
@@ -32,7 +32,7 @@ function Slider({ label, value, onChange }: { label: string; value: number; onCh
     return (
       <form className="flex flex-col">
         <label className="text-white font-thin" htmlFor={label}>{label}</label>
-        <input className="accent-white" type="range" id={label} name={label} min="0" max="50" value={value} onChange={handleSliderChange} />
+        <input className="accent-white active:accent-slate-400" type="range" id={label} name={label} min="-50" max="50" step="1" value={value} onChange={handleSliderChange} />
       </form>
     );
   }
@@ -101,7 +101,9 @@ export default function laboratory() {
         <header className="flex fixed w-full items-center bg-gradient-to-tr from-blue-700 to-blue-400 text-white p-3">
             <img className="flex h-16 w-1/8" src="https://media.discordapp.net/attachments/1164584907192938657/1170592901303124018/image_8.png?ex=65599a98&is=65472598&hm=74797897c1f89f538f522779938c1aa26fc4ddec605dc866cd0ac2ca1ae1e129&=&width=1440&height=398" alt="SNU Chennai" />
             <h1 className="flex h-1/3 mx-auto font-bold text-3xl mr-32">Physics Virtual Lab</h1>
-            <a href='/' className='flex ml-auto mr-12 font-bold text-white text-2xl'>Home</a>
+            <a href='/' className='flex ml-auto font-bold text-white text-2xl'>Home</a>
+            <a href='/' className='flex ml-10 mr-10 font-bold text-white text-2xl'>Theory</a>
+            <a href='/' className='flex font-bold mr-10 text-white text-2xl'>Simulation</a>
         </header>
         <div className='flex my-auto mb-1/2 justify-center flex-col items-center border border-black w-1/2 px-16 py-3 rounded-2xl bg-gradient-to-t from-blue-950 to-blue-500'>
             <h1 className=" text-3xl text-white font-sans font-semibold py-1">Planck’s Constant Setup</h1>
@@ -111,10 +113,14 @@ export default function laboratory() {
                 <div className="h-4/5 w-1/3 rounded-full mr-3 ml-auto" id="light"><Light color={lightColor?'yellow':'white'}/></div>
             </div>
             <div className='inline-flex justify-center items-center'>
-                <div className='px-10'>
-                    <Display value={10}/>
-                    <button className='flex mx-auto bg-inherit text-white text-center' onClick={handleToggle}><Btn1 label={currentVoltage?'Voltage':'Current'}/></button>
+                <div className=''>
+                    <Display value={(currentMultiplier*0.1).toFixed(2)} label={"Current"}/>
                     
+                {/*    <button className='flex mx-auto bg-inherit text-white text-center' onClick={handleToggle}><Btn1 label={currentVoltage?'Voltage':'Current'}/></button>
+                    */}
+                </div>
+                <div className='px-4'>
+                    <Display value={(userVoltage*0.1).toFixed(2)} label={"Voltage"}/>
                 </div>
                 <div>
                     <Slider label="Light Intensity" value={lightIntensity} onChange={handleLightIntensity}/>
@@ -134,7 +140,7 @@ export default function laboratory() {
             </div>    
             <button className='bg-blue-500 text-white px-4 py-1 border border-black rounded-md mx-3' onClick={handleLightButtonClick}>Light</button>
             
-    </div>
+        </div>
     </main> 
     );
 }

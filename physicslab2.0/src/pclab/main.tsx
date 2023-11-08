@@ -1,6 +1,6 @@
 "use client"
 import { useState } from 'react';
-
+import Aim from './aim';
 
 {/*}
 function Slider({label}: {label: string}) {
@@ -57,6 +57,7 @@ function Btn1({label}: {label:string}) {
 }
 
 export default function laboratory() {
+    const [buttonProp, setButtonProp] = useState(false);
     const [lightColor, setLightColor] = useState(false); 
     const [waveColor, setWaveColor] = useState('white');
     const [currentVoltage, setCurrentVoltage] = useState(false);
@@ -123,6 +124,10 @@ export default function laboratory() {
                     <Display value={(userVoltage*0.1).toFixed(2)} label={"Voltage"}/>
                 </div>
                 <div>
+                    <button className='flex mx-auto bg-inherit text-white text-center' onClick={() => setButtonProp(true)}>Aim</button>
+                    <Aim trigger={buttonProp} setTrigger={setButtonProp}>
+                        <h3>Testing</h3>
+                    </Aim>
                     <Slider label="Light Intensity" value={lightIntensity} onChange={handleLightIntensity}/>
                     <Slider label="Current Multiplier" value={currentMultiplier} onChange={handleCurrentMultiplier} />
                     <Slider label="Voltage Adjustor" value={userVoltage} onChange={voltageAdjustor} />

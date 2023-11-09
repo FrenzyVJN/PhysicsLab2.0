@@ -12,7 +12,7 @@ function Slider({label}: {label: string}) {
     )
 }
 */}
-function Display({value, label}: {value:Number ; label:string}) {
+function Display({value, label}: {value:string ; label:string}) {
     return(
         <div className='h-fit w-fit border border-black rounded-2xl bg-gradient-to-t from-blue-400 to to-blue-950 justify-center mx-auto px-5 py-1'>
             <h1 className='text-2xl text-white'>{label}</h1>
@@ -50,23 +50,16 @@ function Light({color}: {color:string}) {
         </div>
         )
 }
-function Btn1({label}: {label:string}) {
-    return(
-        <button className='bg-blue-500 text-white px-4 py-1 border border-black rounded-md mx-3'>{label}</button>
-    )
-}
+
 
 export default function laboratory() {
     const [buttonProp, setButtonProp] = useState(false);
     const [lightColor, setLightColor] = useState(false); 
     const [waveColor, setWaveColor] = useState('white');
-    const [currentVoltage, setCurrentVoltage] = useState(false);
     const [userVoltage, setUserVoltage] = useState(0);
     const [lightIntensity, setLightIntensity] = useState(0);
     const [currentMultiplier, setCurrentMultiplier] = useState(0);
-    const handleToggle = () => {
-        setCurrentVoltage(!currentVoltage);
-    }
+
     const handleLightButtonClick = () => {
         setLightColor(!lightColor);
     }
@@ -101,10 +94,10 @@ export default function laboratory() {
     <main className='flex w-screen h-screen flex-col items-center bg-gradient-to-b from-blue-950 to-blue-400'>
         <header className="flex fixed w-full items-center bg-gradient-to-tr from-blue-700 to-blue-400 text-white p-3">
             <img className="flex h-16 w-1/8" src="https://media.discordapp.net/attachments/1164584907192938657/1170592901303124018/image_8.png?ex=65599a98&is=65472598&hm=74797897c1f89f538f522779938c1aa26fc4ddec605dc866cd0ac2ca1ae1e129&=&width=1440&height=398" alt="SNU Chennai" />
-            <h1 className="flex h-1/3 mx-auto font-bold text-3xl mr-32">Physics Virtual Lab</h1>
+            <h1 className="flex h-1/3 ml-auto font-bold text-3xl ">Physics Virtual Lab</h1>
             <a href='/' className='flex ml-auto font-bold text-white text-2xl'>Home</a>
-            <a href='/' className='flex ml-10 mr-10 font-bold text-white text-2xl'>Theory</a>
-            <a href='/' className='flex font-bold mr-10 text-white text-2xl'>Simulation</a>
+            <a href='/' className='flex ml-3 mr-3 font-bold text-white text-2xl'>Theory</a>
+            <a href='/' className='flex font-bold mr-3 text-white text-2xl'>Simulation</a>
         </header>
         <div className='flex my-auto mb-1/2 justify-center flex-col items-center border border-black w-1/2 px-16 py-3 rounded-2xl bg-gradient-to-t from-blue-950 to-blue-500'>
             <h1 className=" text-3xl text-white font-sans font-semibold py-1">Planck’s Constant Setup</h1>

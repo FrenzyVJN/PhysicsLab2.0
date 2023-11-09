@@ -1,7 +1,6 @@
-import React from "react";
 import "./aim.css";
 
-function Aim(props) {
+function Aim(props : any) {
     return (props.trigger)?(
         <div className="popup">
             <div className="popup-inner">

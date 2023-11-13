@@ -1,7 +1,7 @@
 "use client"
 import { useState } from 'react';
 import Aim from './aim';
-
+import Formulas from './formula';
 {/*}
 function Slider({label}: {label: string}) {
     return(
@@ -68,7 +68,8 @@ function Btn1({label}: {label:string}) {
 }
 
 export default function laboratory() {
-    const [buttonProp, setButtonProp] = useState(false);
+    const [buttonProp1, setButton1Prop] = useState(false);
+    const [buttonProp2, setButton2Prop] = useState(false);
     const [lightColor, setLightColor] = useState(false); 
     const [waveColor, setWaveColor] = useState('white');
     const [currentVoltage, setCurrentVoltage] = useState(false);
@@ -133,10 +134,15 @@ export default function laboratory() {
                     <Display value={(userVoltage*0.1).toFixed(2)} label={"Voltage"}/>
                 </div>
                 <div>
-                    <button className='flex mx-auto bg-inherit text-white text-center' onClick={() => setButtonProp(true)}>Aim</button>
-                    <Aim trigger={buttonProp} setTrigger={setButtonProp}>
+                    <button className='flex flex-col mx-auto bg-inherit border border-white text-white text-center py-1 px-2' onClick={() => setButton1Prop(true)}>Aim</button>
+                    <Aim trigger={buttonProp1} setTrigger={setButton1Prop}>
                         <h3>Calculate (i) Planck’s constant and (ii) work function of the metal using photoelectric effect</h3>
                     </Aim>
+                    <button className='flex mx-auto bg-inherit border border-white text-white text-center py-1 px-2' onClick={() => setButton2Prop(true)}>Formula</button>
+                    <Formulas trigger={buttonProp2} setTrigger={setButton2Prop}>
+                        <h3>Planck's Constant = (eV)/(λ)</h3>
+                        <h3>Work Function = (eV)-(φ)</h3>
+                    </Formulas>
                     <Slider label="Light Intensity" value={lightIntensity} onChange={handleLightIntensity}/>
                     <Slider1 label="Current Multiplier" value={currentMultiplier} onChange={handleCurrentMultiplier} />
                     <Slider label="Voltage Adjustor" value={userVoltage} onChange={voltageAdjustor} />

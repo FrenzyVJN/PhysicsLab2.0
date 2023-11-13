@@ -14,7 +14,7 @@ function Slider({label}: {label: string}) {
 */}
 function Display({value, label}: {value:string ; label:string}) {
     return(
-        <div className='h-fit w-fit border border-black rounded-2xl bg-gradient-to-t from-blue-400 to to-blue-950 justify-center mx-auto px-5 py-1'>
+        <div className='h-fit w-fit border border-black rounded-2xl bg-gradient-to-t from-slate-400 to to-slate-800 justify-center mx-auto px-5 py-1'>
             <h1 className='text-2xl text-white'>{label}</h1>
             <div className='justify-center text-center text-white text-4xl text-bold'>
                 <h3>{String(value)}</h3>
@@ -91,7 +91,7 @@ export default function laboratory() {
         setCurrentMultiplier(newValue);
     }
     return (
-    <main className='flex w-screen h-screen flex-col items-center bg-gradient-to-b from-blue-950 to-blue-400'>
+    <main className='flex w-screen h-screen flex-col items-center bg-white '>
         <header className="flex fixed w-full items-center bg-gradient-to-tr from-blue-700 to-blue-400 text-white p-3">
             <img className="flex h-16 w-1/8" src="https://media.discordapp.net/attachments/1164584907192938657/1170592901303124018/image_8.png?ex=65599a98&is=65472598&hm=74797897c1f89f538f522779938c1aa26fc4ddec605dc866cd0ac2ca1ae1e129&=&width=1440&height=398" alt="SNU Chennai" />
             <h1 className="flex h-1/3 ml-auto font-bold text-3xl ">Physics Virtual Lab</h1>
@@ -99,7 +99,7 @@ export default function laboratory() {
             <a href='/' className='flex ml-3 mr-3 font-bold text-white text-2xl'>Theory</a>
             <a href='/' className='flex font-bold mr-3 text-white text-2xl'>Simulation</a>
         </header>
-        <div className='flex my-auto mb-1/2 justify-center flex-col items-center border border-black w-1/2 px-16 py-3 rounded-2xl bg-gradient-to-t from-blue-950 to-blue-500'>
+        <div className='flex my-auto mb-1/2 justify-center flex-col items-center border border-black w-1/2 px-16 py-3 rounded-2xl bg-gradient-to-t from-slate-950 to-slate-500'>
             <h1 className=" text-3xl text-white font-sans font-semibold py-1">Planck’s Constant Setup</h1>
             <div className="flex h-fit w-full justify-center items-center px-15 border rounded-xl border-blue-200">
                 <div className="h-4/5 w-1/3 ml-3 mr-auto rounded-full" id="frame"><Light color={waveColor}/></div>
@@ -129,14 +129,14 @@ export default function laboratory() {
             </div>
 
             <div className='inline-flex justify-center items-center py-2'>
-                <button className='bg-blue-500 text-white px-4 py-1 border border-black rounded-md mx-3' onClick={handleLightButtonClick460}>460</button>
-                <button className='bg-blue-500 px-4 text-white py-1 border border-black rounded-md mx-3' onClick={handleLightButtonClick500}>500</button>
-                <button className='bg-blue-500 px-4 text-white py-1 border border-black rounded-md mx-3' onClick={handleLightButtonClick540}>540</button>
-                <button className='bg-blue-500 px-4 text-white py-1 border border-black rounded-md mx-3' onClick={handleLightButtonClick570}>570</button>
-                <button className='bg-blue-500 px-4 text-white py-1 border border-black rounded-md mx-3' onClick={handleLightButtonClick635}>635</button>
+                <button className='bg-slate-500 text-white px-4 py-1 border border-black rounded-md mx-3' onClick={handleLightButtonClick460}>460</button>
+                <button className='bg-slate-500 px-4 text-white py-1 border border-black rounded-md mx-3' onClick={handleLightButtonClick500}>500</button>
+                <button className='bg-slate-500 px-4 text-white py-1 border border-black rounded-md mx-3' onClick={handleLightButtonClick540}>540</button>
+                <button className='bg-slate-500 px-4 text-white py-1 border border-black rounded-md mx-3' onClick={handleLightButtonClick570}>570</button>
+                <button className='bg-slate-500 px-4 text-white py-1 border border-black rounded-md mx-3' onClick={handleLightButtonClick635}>635</button>
                 
             </div>    
-            <button className='bg-blue-500 text-white px-4 py-1 border border-black rounded-md mx-3' onClick={handleLightButtonClick}>Light</button>
+            <button className='bg-slate-500 text-white px-4 py-1 border border-black rounded-md mx-3' onClick={handleLightButtonClick}>Light</button>
             
         </div>
     </main> 

@@ -12,9 +12,9 @@ function Slider({label}: {label: string}) {
     )
 }
 */}
-function Display({value, label}: {value:string ; label:string}) {
+function Display({value, label}: {value:Number ; label:string}) {
     return(
-        <div className='h-fit w-fit border border-black rounded-2xl bg-gradient-to-t from-slate-400 to to-slate-800 justify-center mx-auto px-5 py-1'>
+        <div className='h-fit w-fit border border-black rounded-2xl bg-gradient-to-t from-blue-400 to to-blue-950 justify-center mx-auto px-5 py-1'>
             <h1 className='text-2xl text-white'>{label}</h1>
             <div className='justify-center text-center text-white text-4xl text-bold'>
                 <h3>{String(value)}</h3>
@@ -36,20 +36,7 @@ function Slider({ label, value, onChange }: { label: string; value: number; onCh
       </form>
     );
   }
-  function Slider1({ label, value, onChange }: { label: string; value: number; onChange: (newValue: number) => void }) {
-    const handleSliderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const newValue = parseInt(event.target.value, 10); // Parse the input value as an integer
-      onChange(newValue); // Call the onChange function with the new value
-    };
-
-    return (
-      <form className="flex flex-col">
-        <label className="text-white font-thin" htmlFor={label}>{label}</label>
-        <input className="accent-white active:accent-slate-400" type="range" id={label} name={label} min="0" max="3" value={value} onChange={handleSliderChange} />
-      </form>
-    );
-  }
-
+  
 function Light({color}: {color:string}) {
     const customStyles = {
         backgroundColor: color,
@@ -63,17 +50,23 @@ function Light({color}: {color:string}) {
         </div>
         )
 }
-
+function Btn1({label}: {label:string}) {
+    return(
+        <button className='bg-blue-500 text-white px-4 py-1 border border-black rounded-md mx-3'>{label}</button>
+    )
+}
 
 export default function laboratory() {
     const [buttonProp, setButtonProp] = useState(false);
     const [lightColor, setLightColor] = useState(false); 
     const [waveColor, setWaveColor] = useState('white');
+    const [currentVoltage, setCurrentVoltage] = useState(false);
     const [userVoltage, setUserVoltage] = useState(0);
     const [lightIntensity, setLightIntensity] = useState(0);
     const [currentMultiplier, setCurrentMultiplier] = useState(0);
-
-    
+    const handleToggle = () => {
+        setCurrentVoltage(!currentVoltage);
+    }
     const handleLightButtonClick = () => {
         setLightColor(!lightColor);
     }
@@ -105,14 +98,15 @@ export default function laboratory() {
         setCurrentMultiplier(newValue);
     }
     return (
-    <main className='flex w-screen h-screen flex-col items-center bg-white '>
+    <main className='flex w-screen h-screen flex-col items-center bg-gradient-to-b from-blue-950 to-blue-400'>
         <header className="flex fixed w-full items-center bg-gradient-to-tr from-blue-700 to-blue-400 text-white p-3">
             <img className="flex h-16 w-1/8" src="https://media.discordapp.net/attachments/1164584907192938657/1170592901303124018/image_8.png?ex=65599a98&is=65472598&hm=74797897c1f89f538f522779938c1aa26fc4ddec605dc866cd0ac2ca1ae1e129&=&width=1440&height=398" alt="SNU Chennai" />
-            <h1 className="flex h-1/3 ml-auto font-bold text-3xl ">Physics Virtual Lab</h1>
+            <h1 className="flex h-1/3 mx-auto font-bold text-3xl mr-32">Physics Virtual Lab</h1>
             <a href='/' className='flex ml-auto font-bold text-white text-2xl'>Home</a>
-            <a href='/' className='flex font-bold ml-4 mr-4 text-white text-2xl'>Simulation</a>
+            <a href='/' className='flex ml-10 mr-10 font-bold text-white text-2xl'>Theory</a>
+            <a href='/' className='flex font-bold mr-10 text-white text-2xl'>Simulation</a>
         </header>
-        <div className='flex my-auto mb-1/2 justify-center flex-col items-center border border-black w-1/2 px-16 py-3 rounded-2xl bg-gradient-to-t from-slate-950 to-slate-500'>
+        <div className='flex my-auto mb-1/2 justify-center flex-col items-center border border-black w-1/2 px-16 py-3 rounded-2xl bg-gradient-to-t from-blue-950 to-blue-500'>
             <h1 className=" text-3xl text-white font-sans font-semibold py-1">Planck’s Constant Setup</h1>
             <div className="flex h-fit w-full justify-center items-center px-15 border rounded-xl border-blue-200">
                 <div className="h-4/5 w-1/3 ml-3 mr-auto rounded-full" id="frame"><Light color={waveColor}/></div>
@@ -121,7 +115,7 @@ export default function laboratory() {
             </div>
             <div className='inline-flex justify-center items-center'>
                 <div className=''>
-                    <Display value={(10**(-currentMultiplier)).toFixed(3)} label={"Current"}/>
+                    <Display value={(currentMultiplier*0.1).toFixed(2)} label={"Current"}/>
                     
                 {/*    <button className='flex mx-auto bg-inherit text-white text-center' onClick={handleToggle}><Btn1 label={currentVoltage?'Voltage':'Current'}/></button>
                     */}
@@ -132,24 +126,24 @@ export default function laboratory() {
                 <div>
                     <button className='flex mx-auto bg-inherit text-white text-center' onClick={() => setButtonProp(true)}>Aim</button>
                     <Aim trigger={buttonProp} setTrigger={setButtonProp}>
-                        <h3>Calculate (i) Planck’s constant and (ii) work function of the metal using photoelectric effect</h3>
+                        <h3>Testing</h3>
                     </Aim>
                     <Slider label="Light Intensity" value={lightIntensity} onChange={handleLightIntensity}/>
-                    <Slider1 label="Current Multiplier" value={currentMultiplier} onChange={handleCurrentMultiplier} />
+                    <Slider label="Current Multiplier" value={currentMultiplier} onChange={handleCurrentMultiplier} />
                     <Slider label="Voltage Adjustor" value={userVoltage} onChange={voltageAdjustor} />
                 </div>
                 
             </div>
 
             <div className='inline-flex justify-center items-center py-2'>
-                <button className='bg-slate-500 text-white px-4 py-1 border border-black rounded-md mx-3' onClick={handleLightButtonClick460}>460</button>
-                <button className='bg-slate-500 px-4 text-white py-1 border border-black rounded-md mx-3' onClick={handleLightButtonClick500}>500</button>
-                <button className='bg-slate-500 px-4 text-white py-1 border border-black rounded-md mx-3' onClick={handleLightButtonClick540}>540</button>
-                <button className='bg-slate-500 px-4 text-white py-1 border border-black rounded-md mx-3' onClick={handleLightButtonClick570}>570</button>
-                <button className='bg-slate-500 px-4 text-white py-1 border border-black rounded-md mx-3' onClick={handleLightButtonClick635}>635</button>
+                <button className='bg-blue-500 text-white px-4 py-1 border border-black rounded-md mx-3' onClick={handleLightButtonClick460}>460</button>
+                <button className='bg-blue-500 px-4 text-white py-1 border border-black rounded-md mx-3' onClick={handleLightButtonClick500}>500</button>
+                <button className='bg-blue-500 px-4 text-white py-1 border border-black rounded-md mx-3' onClick={handleLightButtonClick540}>540</button>
+                <button className='bg-blue-500 px-4 text-white py-1 border border-black rounded-md mx-3' onClick={handleLightButtonClick570}>570</button>
+                <button className='bg-blue-500 px-4 text-white py-1 border border-black rounded-md mx-3' onClick={handleLightButtonClick635}>635</button>
                 
             </div>    
-            <button className='bg-slate-500 text-white px-4 py-1 border border-black rounded-md mx-3' onClick={handleLightButtonClick}>Light</button>
+            <button className='bg-blue-500 text-white px-4 py-1 border border-black rounded-md mx-3' onClick={handleLightButtonClick}>Light</button>
             
         </div>
     </main> 

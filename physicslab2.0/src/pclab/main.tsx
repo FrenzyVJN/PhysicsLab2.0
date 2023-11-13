@@ -112,13 +112,12 @@ export default function laboratory() {
     <main className='flex w-screen h-screen flex-col items-center bg-gradient-to-b from-blue-950 to-blue-400'>
         <header className="flex fixed w-full items-center bg-gradient-to-tr from-blue-700 to-blue-400 text-white p-3">
             <img className="flex h-16 w-1/8" src="https://media.discordapp.net/attachments/1164584907192938657/1170592901303124018/image_8.png?ex=65599a98&is=65472598&hm=74797897c1f89f538f522779938c1aa26fc4ddec605dc866cd0ac2ca1ae1e129&=&width=1440&height=398" alt="SNU Chennai" />
-            <h1 className="flex h-1/3 mx-auto font-bold text-3xl mr-32">Physics Virtual Lab</h1>
+            <h1 className="flex text-3xl font-extrabold tracking-[-0.05em] text-white sm:text-5xl sm:leading-[3.5rem] ml-auto">Physics Virtual Lab</h1>
             <a href='/' className='flex ml-auto font-bold text-white text-2xl'>Home</a>
-            <a href='/' className='flex ml-5 mr-5 font-bold text-white text-2xl'>Theory</a>
-            <a href='/' className='flex font-bold mr-3 text-white text-2xl'>Simulation</a>
+            <a href='/' className='flex font-bold mr-3 ml-3 text-white text-2xl'>Simulation</a>
         </header>
-        <div className='flex my-auto mb-1/2 justify-center flex-col items-center border border-black w-1/2 px-16 py-3 rounded-2xl bg-gradient-to-t from-blue-950 to-blue-500'>
-            <h1 className=" text-3xl text-white font-sans font-semibold py-1">Planck’s Constant Setup</h1>
+        <div className='flex my-auto mb-1/2 justify-center flex-col items-center border border-black w-1/2 px-16 shadow-lg py-3 rounded-2xl bg-gradient-to-t from-blue-950 to-blue-500'>
+            <h1 className=" mt-4 text-3xl font-extrabold tracking-[-0.04em] text-white sm:text-3xl sm:leading-[3.5rem]">Planck’s Constant Setup</h1>
             <div className="flex h-fit w-full justify-center items-center px-15 border rounded-xl border-blue-200">
                 <div className="h-4/5 w-1/3 ml-3 mr-auto rounded-full" id="frame"><Light color={waveColor}/></div>
                 <div className="flex h-1/2 w-full justify-center px-15 py-20"></div>

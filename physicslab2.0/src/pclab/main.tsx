@@ -135,7 +135,7 @@ export default function laboratory() {
                 <div>
                     <button className='flex mx-auto bg-inherit text-white text-center' onClick={() => setButtonProp(true)}>Aim</button>
                     <Aim trigger={buttonProp} setTrigger={setButtonProp}>
-                        <h3>Testing</h3>
+                        <h3>Calculate (i) Planck’s constant and (ii) work function of the metal using photoelectric effect</h3>
                     </Aim>
                     <Slider label="Light Intensity" value={lightIntensity} onChange={handleLightIntensity}/>
                     <Slider1 label="Current Multiplier" value={currentMultiplier} onChange={handleCurrentMultiplier} />

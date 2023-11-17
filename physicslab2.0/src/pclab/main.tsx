@@ -17,7 +17,7 @@ function Display({value, label}: {value:Number ; label:string}) {
         <div className='h-fit w-fit border border-black rounded-2xl bg-gradient-to-t from-blue-400 to to-blue-700 justify-center mx-auto px-5 py-1'>
             <h1 className='text-2xl text-white'>{label}</h1>
             <div className='justify-center text-center text-white text-4xl text-bold'>
-                <h3>{String(value)}</h3>
+                <h3>{value.toFixed(2)}</h3>
             </div>
         </div>
     )
@@ -61,11 +61,7 @@ function Light({color}: {color:string}) {
         </div>
         )
 }
-function Btn1({label}: {label:string}) {
-    return(
-        <button className='bg-blue-500 text-white px-4 py-1 border border-black rounded-md mx-3'>{label}</button>
-    )
-}
+
 
 export default function laboratory() {
     const [buttonProp1, setButton1Prop] = useState(false);
@@ -73,47 +69,44 @@ export default function laboratory() {
     const [lightColor, setLightColor] = useState(false); 
     const [waveLength, setWaveLength] = useState(0);
     const [waveColor, setWaveColor] = useState('white');
-    const [currentVoltage, setCurrentVoltage] = useState(false);
     const [userVoltage, setUserVoltage] = useState(0);
     const [lightIntensity, setLightIntensity] = useState(0);
     const [currentMultiplier, setCurrentMultiplier] = useState(0);
-    const handleToggle = () => {
-        setCurrentVoltage(!currentVoltage);
-    }
+
     const handleLightButtonClick = () => {
         setLightColor(!lightColor);
     }
     const handleLightButtonClick460 = () => {
         setWaveColor('blue');
         setWaveLength(460);
+        console.log(waveLength);
         setUserVoltage(-0.92)
     }
     const handleLightButtonClick500 = () => {
         setWaveColor('cyan');
         setWaveLength(500);
+        console.log(waveLength);
         setUserVoltage(-0.76)
       };
     const handleLightButtonClick540 = () => {
         setWaveColor('green');
         setWaveLength(540);
+        console.log(waveLength);
         setUserVoltage(-0.62)
     }
     const handleLightButtonClick570 = () => {
         setWaveColor('yellow');
         setWaveLength(570);
+        console.log(waveLength);
         setUserVoltage(-0.46)
 
     }
     const handleLightButtonClick635 = () => {
         setWaveColor('red');
         setWaveLength(635);
+        console.log(waveLength);
         setUserVoltage(-0.30)
 
-    }
-    const voltageAdjustor = (newValue : number) => {
-        console.log("Current Voltage - ",newValue);
-        const newval = ((0.7*10^3)/waveLength)+1;
-        setUserVoltage(newval);
     }
     const handleLightIntensity = (newValue : number) => {
         console.log("Light Intensity - ",newValue);
@@ -145,7 +138,7 @@ export default function laboratory() {
                     */}
                 </div>
                 <div className='px-4'>
-                    <Display value={(userVoltage).toFixed(3)} label={"Voltage"}/>
+                    <Display value={(userVoltage)} label={"Voltage"}/>
                 </div>
                 <div>
                     <button className='flex flex-col mx-auto bg-inherit border border-white text-white text-center py-1 px-2' onClick={() => setButton1Prop(true)}>Aim</button>

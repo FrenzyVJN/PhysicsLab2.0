@@ -71,6 +71,7 @@ export default function laboratory() {
     const [buttonProp1, setButton1Prop] = useState(false);
     const [buttonProp2, setButton2Prop] = useState(false);
     const [lightColor, setLightColor] = useState(false); 
+    const [waveLength, setWaveLength] = useState(0);
     const [waveColor, setWaveColor] = useState('white');
     const [currentVoltage, setCurrentVoltage] = useState(false);
     const [userVoltage, setUserVoltage] = useState(0);
@@ -84,22 +85,35 @@ export default function laboratory() {
     }
     const handleLightButtonClick460 = () => {
         setWaveColor('blue');
+        setWaveLength(460);
+        setUserVoltage(-0.92)
     }
     const handleLightButtonClick500 = () => {
         setWaveColor('cyan');
+        setWaveLength(500);
+        setUserVoltage(-0.76)
       };
     const handleLightButtonClick540 = () => {
-        setWaveColor('green');    
+        setWaveColor('green');
+        setWaveLength(540);
+        setUserVoltage(-0.62)
     }
     const handleLightButtonClick570 = () => {
         setWaveColor('yellow');
+        setWaveLength(570);
+        setUserVoltage(-0.46)
+
     }
     const handleLightButtonClick635 = () => {
         setWaveColor('red');
+        setWaveLength(635);
+        setUserVoltage(-0.30)
+
     }
     const voltageAdjustor = (newValue : number) => {
         console.log("Current Voltage - ",newValue);
-        setUserVoltage(newValue);
+        const newval = ((0.7*10^3)/waveLength)+1;
+        setUserVoltage(newval);
     }
     const handleLightIntensity = (newValue : number) => {
         console.log("Light Intensity - ",newValue);
@@ -126,12 +140,12 @@ export default function laboratory() {
             </div>
             <div className='inline-flex justify-center items-center'>
                 <div className=''>
-                    <Display value={(10**(-currentMultiplier)).toFixed(3)} label={"Current"}/>                    
+                    <Display value={0} label={"Current"}/>                    
                 {/*    <button className='flex mx-auto bg-inherit text-white text-center' onClick={handleToggle}><Btn1 label={currentVoltage?'Voltage':'Current'}/></button>
                     */}
                 </div>
                 <div className='px-4'>
-                    <Display value={(userVoltage*0.1).toFixed(2)} label={"Voltage"}/>
+                    <Display value={(userVoltage).toFixed(3)} label={"Voltage"}/>
                 </div>
                 <div>
                     <button className='flex flex-col mx-auto bg-inherit border border-white text-white text-center py-1 px-2' onClick={() => setButton1Prop(true)}>Aim</button>
@@ -145,11 +159,10 @@ export default function laboratory() {
                     </Formulas>
                     <Slider label="Light Intensity" value={lightIntensity} onChange={handleLightIntensity}/>
                     <Slider1 label="Current Multiplier" value={currentMultiplier} onChange={handleCurrentMultiplier} />
-                    <Slider label="Voltage Adjustor" value={userVoltage} onChange={voltageAdjustor} />
+                    {/*<Slider label="Voltage Adjustor" value={userVoltage} />*/}
                 </div>
                 
             </div>
-
             <div className='inline-flex justify-center items-center py-2'>
                 <button className='bg-blue-500 text-white px-4 py-1 border border-black rounded-md mx-3' onClick={handleLightButtonClick460}>460</button>
                 <button className='bg-blue-500 px-4 text-white py-1 border border-black rounded-md mx-3' onClick={handleLightButtonClick500}>500</button>

@@ -49,35 +49,46 @@ export default function laboratory() {
         setLightColor(!lightColor);
     }
     const handleLightButtonClick460 = () => {
-        setWaveColor('blue');
-        setWaveLength(460);
-        console.log(waveLength);
-        setUserVoltage(-0.92)
+        if(lightColor) {
+            setWaveColor('blue');
+            setWaveLength(460);
+            console.log(waveLength);
+            setUserVoltage(-0.92)
+        }
+
     }
     const handleLightButtonClick500 = () => {
-        setWaveColor('cyan');
-        setWaveLength(500);
-        console.log(waveLength);
-        setUserVoltage(-0.76)
+        if(lightColor) {
+            setWaveColor('cyan');
+            setWaveLength(500);
+            console.log(waveLength);
+            setUserVoltage(-0.76)
+        }
       };
     const handleLightButtonClick540 = () => {
-        setWaveColor('green');
-        setWaveLength(540);
-        console.log(waveLength);
-        setUserVoltage(-0.62)
+        if(lightColor) {
+            setWaveColor('green');
+            setWaveLength(540);
+            console.log(waveLength);
+            setUserVoltage(-0.60)
+        }
     }
     const handleLightButtonClick570 = () => {
-        setWaveColor('yellow');
-        setWaveLength(570);
-        console.log(waveLength);
-        setUserVoltage(-0.46)
+        if(lightColor) {
+            setWaveColor('yellow');
+            setWaveLength(570);
+            console.log(waveLength);
+            setUserVoltage(-0.45)
+        }
 
     }
     const handleLightButtonClick635 = () => {
-        setWaveColor('red');
-        setWaveLength(635);
-        console.log(waveLength);
-        setUserVoltage(-0.30)
+        if(lightColor) {
+            setWaveColor('red');
+            setWaveLength(635);
+            console.log(waveLength);
+            setUserVoltage(-0.30)
+        }
 
     }
 

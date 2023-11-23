@@ -3,8 +3,8 @@ import { useState } from 'react';
 import Aim from './aim';
 import Formulas from './formula';
 import Table from './table';
-import CanvasJSReact from '@canvasjs/react-charts';
-
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+    
 {/*}
 function Slider({label}: {label: string}) {
     return(
@@ -15,7 +15,6 @@ function Slider({label}: {label: string}) {
     )
 }
 */}
-const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 function Display({value, label}: {value:Number ; label:string}) {
     return(
@@ -51,7 +50,15 @@ export default function laboratory() {
     const [waveColor, setWaveColor] = useState('white');
     const [userVoltage, setUserVoltage] = useState(0);
     const [buttonProp4, setButton4Prop] = useState(false);
-
+    const data = [
+        { wavelength: 600, stoppingPotential: -0.30, inverseWavelength: 1.5 },
+        { wavelength: 570, stoppingPotential: -0.45, inverseWavelength: 1.75 },
+        { wavelength: 540, stoppingPotential: -0.60, inverseWavelength: 1.85 },
+        { wavelength: 500, stoppingPotential: -0.76, inverseWavelength: 2.00 },
+        { wavelength: 460, stoppingPotential: -0.92, inverseWavelength: 2.17 },
+      ];
+      
+    
     const handleLightButtonClick = () => {
         setLightColor(!lightColor);
     }
@@ -98,32 +105,7 @@ export default function laboratory() {
         }
 
     }
-    const chartData = [
-        { label: '460', y: -0.92, x: 1 / 460 },
-        { label: '500', y: -0.76, x: 1 / 500 },
-        { label: '540', y: -0.60, x: 1 / 540 },
-        { label: '570', y: -0.45, x: 1 / 570 },
-        { label: '600', y: -0.30, x: 1 / 600 },
-      ];
-      const options = {
-        animationEnabled: true,
-        theme: 'light2',
-        title: {
-          text: 'Stopping Potential vs 1/Wavelength',
-        },
-        axisY: {
-          title: 'Stopping Potential (V)',
-        },
-        axisX: {
-          title: '1/Wavelength',
-        },
-        data: [
-          {
-            type: 'line',
-            dataPoints: chartData,
-          },
-        ],
-      };
+    
     
 
     return (
@@ -177,10 +159,19 @@ export default function laboratory() {
                 </tbody>
             </table>
             </Table>
-            <button className='flex mx-auto bg-inherit border mb-4 text-xl border-white text-white text-center py-2 px-4' onClick={() => setButton4Prop(true)}>Table</button>
+            <button className='flex mx-auto bg-inherit border mb-4 text-xl border-white text-white text-center py-2 px-4' onClick={() => setButton4Prop(true)}>Graph</button>
             
             <Table trigger={buttonProp4} setTrigger={setButton4Prop}>
-                <CanvasJSChart options={options} />
+            <div className='mt-5'>
+                <LineChart width={600} height={300} data={data} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
+                <CartesianGrid strokeDasharray='3 3' />
+                <XAxis dataKey='inverseWavelength' label={{ value: '1/Wavelength', position: 'insideBottomRight', offset: -10 }} />
+                <YAxis label={{ value: 'Stopping Potential (V)', angle: -90, position: 'insideBottomLeft' }} />
+                <Tooltip />
+                <Legend />
+                <Line type='monotone' dataKey='stoppingPotential' stroke='#8884d8' activeDot={{ r: 8 }} />
+                </LineChart>
+            </div>
             </Table>
             {/*<Slider label="Voltage Adjustor" value={userVoltage} />*/}
         </div>
@@ -212,6 +203,8 @@ export default function laboratory() {
                 
             </div>    
             <button className='bg-blue-500 text-white px-4 py-1 border border-black rounded-md mx-3' onClick={handleLightButtonClick}>Light</button>
+
+
             
         </div>
     </main> 

@@ -41,7 +41,7 @@ function Light({color}: {color:string}) {
         )
 }
 
-export default function laboratory() {
+export default function Laboratory() {
     const [buttonProp1, setButton1Prop] = useState(false);
     const [buttonProp2, setButton2Prop] = useState(false);
     const [buttonProp3, setButton3Prop] = useState(false);
@@ -109,24 +109,24 @@ export default function laboratory() {
     
 
     return (
-    <main className='flex w-fit min-h-screen md:w-screen  md:min-h-screen flex-col items-center bg-gradient-to-b from-blue-950 to-blue-500'>
-        <header className="flex w-full items-center bg-gradient-to-tr from-blue-700 to-blue-400 text-white p-1">
+    <main className='flex w-fit min-h-screen md:w-screen  md:min-h-screen flex-col  items-center  bg-gradient-to-b  from-blue-950 to-blue-500'>
+        <header className="flex w-full items-center dark:bg-slate-800 bg-gradient-to-tr  from-blue-700 py-3 to-blue-400 text-white p-1">
             <img className="flex h-10 w-1/8" src="https://media.discordapp.net/attachments/1164584907192938657/1170592901303124018/image_8.png?ex=65599a98&is=65472598&hm=74797897c1f89f538f522779938c1aa26fc4ddec605dc866cd0ac2ca1ae1e129&=&width=1440&height=398" alt="SNU Chennai" />
             <h1 className="flex text-lg font-bold tracking-[-0.05em] text-white sm:text-4xl md:text-3xl sm:leading-[3.5rem] ml-auto">Physics Virtual Lab</h1>
-            <a href='/' className='flex ml-auto font-bold text-white text-2xl'>Home</a>
-            <a href='/' className='flex font-bold mr-3 ml-3 text-white text-2xl'>Simulation</a>
+            <a href='/' className='flex ml-auto font-bold text-white text-lg'>Home</a>
+            <a href='/' className='flex font-bold mr-3 ml-3 text-white text-lg'>Simulation</a>
         </header>
-        <div className='flex mt-5'>
-            <button className='flex mx-auto bg-inherit border mb-4 text-xl border-white text-white text-center py-2 px-4' onClick={() => setButton1Prop(true)}>Aim</button>
+        <div className='flex mt-5 border border-white rounded-lg p-2 gap-3 mb-3'>
+            <button className='flex mx-auto bg-inherit border text-xl border-white text-white text-center py-2 px-4' onClick={() => setButton1Prop(true)}>Aim</button>
             <Aim trigger={buttonProp1} setTrigger={setButton1Prop}>
                 <h3>Calculate (i) Planck’s constant and (ii) work function of the metal using photoelectric effect</h3>
             </Aim>
-            <button className='flex mx-auto bg-inherit border mb-4 text-xl border-white text-white text-center py-2 px-4' onClick={() => setButton2Prop(true)}>Formula</button>
+            <button className='flex mx-auto bg-inherit border text-xl border-white text-white text-center py-2 px-4' onClick={() => setButton2Prop(true)}>Formula</button>
             <Formulas trigger={buttonProp2} setTrigger={setButton2Prop}>
                 <h3>Planck's Constant = (eV)/(λ)</h3>
                 <h3>Work Function = (eV)-(φ)</h3>
             </Formulas>
-            <button className='flex mx-auto bg-inherit border mb-4 text-xl border-white text-white text-center py-2 px-4' onClick={() => setButton3Prop(true)}>Table</button>
+            <button className='flex mx-auto bg-inherit border text-xl border-white text-white text-center py-2 px-4' onClick={() => setButton3Prop(true)}>Table</button>
             <Table trigger={buttonProp3} setTrigger={setButton3Prop}>
             <table>
                 <thead>
@@ -159,7 +159,7 @@ export default function laboratory() {
                 </tbody>
             </table>
             </Table>
-            <button className='flex mx-auto bg-inherit border mb-4 text-xl border-white text-white text-center py-2 px-4' onClick={() => setButton4Prop(true)}>Graph</button>
+            <button className='flex mx-auto bg-inherit border text-xl border-white text-white text-center py-2 px-4' onClick={() => setButton4Prop(true)}>Graph</button>
             
             <Table trigger={buttonProp4} setTrigger={setButton4Prop}>
             <div className='mt-5'>
@@ -169,7 +169,7 @@ export default function laboratory() {
                 <YAxis label={{ value: 'Stopping Potential (V)', angle: -90, position: 'insideBottomLeft' }} />
                 <Tooltip />
                 <Legend />
-                <Line type='monotone' dataKey='stoppingPotential' stroke='#8884d8' activeDot={{ r: 8 }} />
+                <Line type='monotone' dataKey='StoppingPotential' stroke='#8884d8' activeDot={{ r: 8 }} />
                 </LineChart>
             </div>
             </Table>

@@ -4,7 +4,6 @@ import Aim from './aim';
 import Formulas from './formula';
 import Table from './table';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
-import './aim.css'
 {/*}
 function Slider({label}: {label: string}) {
     return(
@@ -109,7 +108,7 @@ export default function Laboratory() {
     
 
     return (
-    <main className='flex w-fit min-h-screen md:w-screen  md:min-h-screen flex-col  items-center  bg-gradient-to-b animate-movingBg from-blue-950 via-blue-900 to-blue-500'>
+    <main className='flex w-fit min-h-screen md:w-screen  md:min-h-screen flex-col  items-center  bg-gradient-to-r animate-movingBg from-blue-500 via-blue-950 to-blue-500'>
         <header className="flex w-full items-center bg-gradient-to-tr  from-blue-700 py-3 to-blue-400 text-white p-1">
             <img className="flex h-10 w-1/8" src="https://media.discordapp.net/attachments/1164584907192938657/1170592901303124018/image_8.png?ex=65599a98&is=65472598&hm=74797897c1f89f538f522779938c1aa26fc4ddec605dc866cd0ac2ca1ae1e129&=&width=1440&height=398" alt="SNU Chennai" />
             <h1 className="flex text-lg font-bold tracking-[-0.05em] text-white sm:text-4xl md:text-3xl sm:leading-[3.5rem] ml-auto">Physics Virtual Lab</h1>

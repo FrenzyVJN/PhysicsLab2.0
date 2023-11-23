@@ -2,7 +2,9 @@
 import { useState } from 'react';
 import Aim from './aim';
 import Formulas from './formula';
-import Table from './table';	
+import Table from './table';
+import CanvasJSReact from '@canvasjs/react-charts';
+
 {/*}
 function Slider({label}: {label: string}) {
     return(
@@ -13,6 +15,8 @@ function Slider({label}: {label: string}) {
     )
 }
 */}
+const CanvasJSChart = CanvasJSReact.CanvasJSChart;
+
 function Display({value, label}: {value:Number ; label:string}) {
     return(
         <div className='h-fit w-fit border border-black rounded-2xl bg-gradient-to-t from-blue-400 to to-blue-700 justify-center mx-auto px-5 py-1'>
@@ -46,6 +50,7 @@ export default function laboratory() {
     const [waveLength, setWaveLength] = useState(0);
     const [waveColor, setWaveColor] = useState('white');
     const [userVoltage, setUserVoltage] = useState(0);
+    const [buttonProp4, setButton4Prop] = useState(false);
 
     const handleLightButtonClick = () => {
         setLightColor(!lightColor);
@@ -93,9 +98,36 @@ export default function laboratory() {
         }
 
     }
+    const chartData = [
+        { label: '460', y: -0.92, x: 1 / 460 },
+        { label: '500', y: -0.76, x: 1 / 500 },
+        { label: '540', y: -0.60, x: 1 / 540 },
+        { label: '570', y: -0.45, x: 1 / 570 },
+        { label: '600', y: -0.30, x: 1 / 600 },
+      ];
+      const options = {
+        animationEnabled: true,
+        theme: 'light2',
+        title: {
+          text: 'Stopping Potential vs 1/Wavelength',
+        },
+        axisY: {
+          title: 'Stopping Potential (V)',
+        },
+        axisX: {
+          title: '1/Wavelength',
+        },
+        data: [
+          {
+            type: 'line',
+            dataPoints: chartData,
+          },
+        ],
+      };
+    
 
     return (
-    <main className='flex w-fit md:w-screen h-fit md:h-screen flex-col items-center bg-gradient-to-b from-blue-950 to-blue-400'>
+    <main className='flex w-fit min-h-screen md:w-screen  md:min-h-screen flex-col items-center bg-gradient-to-b from-blue-950 to-blue-500'>
         <header className="flex w-full items-center bg-gradient-to-tr from-blue-700 to-blue-400 text-white p-1">
             <img className="flex h-10 w-1/8" src="https://media.discordapp.net/attachments/1164584907192938657/1170592901303124018/image_8.png?ex=65599a98&is=65472598&hm=74797897c1f89f538f522779938c1aa26fc4ddec605dc866cd0ac2ca1ae1e129&=&width=1440&height=398" alt="SNU Chennai" />
             <h1 className="flex text-lg font-bold tracking-[-0.05em] text-white sm:text-4xl md:text-3xl sm:leading-[3.5rem] ml-auto">Physics Virtual Lab</h1>
@@ -119,10 +151,10 @@ export default function laboratory() {
                     <tr>
                     <th className='text-center'>Wavelength</th>
                     <th className='text-center px-5'>460</th>
+                    <th className='text-center px-5'>500</th>
                     <th className='text-center px-5'>540</th>
                     <th className='text-center px-5'>570</th>
-                    <th className='text-center px-5'>635</th>
-                    <th className='text-center px-5'>500</th>
+                    <th className='text-center px-5'>600</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -145,7 +177,11 @@ export default function laboratory() {
                 </tbody>
             </table>
             </Table>
+            <button className='flex mx-auto bg-inherit border mb-4 text-xl border-white text-white text-center py-2 px-4' onClick={() => setButton4Prop(true)}>Table</button>
             
+            <Table trigger={buttonProp4} setTrigger={setButton4Prop}>
+                <CanvasJSChart options={options} />
+            </Table>
             {/*<Slider label="Voltage Adjustor" value={userVoltage} />*/}
         </div>
         <div className='flex justify-center flex-col items-center border border-black w-fit py-1 px-16 shadow-lg h-fit rounded-2xl bg-gradient-to-t from-blue-950 to-blue-500'>

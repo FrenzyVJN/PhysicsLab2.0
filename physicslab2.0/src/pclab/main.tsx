@@ -95,14 +95,14 @@ export default function laboratory() {
     }
 
     return (
-    <main className='flex w-screen h-screen flex-col items-center bg-gradient-to-b from-blue-950 to-blue-400'>
-        <header className="flex fixed w-full items-center bg-gradient-to-tr from-blue-700 to-blue-400 text-white p-1">
+    <main className='flex w-fit md:w-screen h-fit md:h-screen flex-col items-center bg-gradient-to-b from-blue-950 to-blue-400'>
+        <header className="flex w-full items-center bg-gradient-to-tr from-blue-700 to-blue-400 text-white p-1">
             <img className="flex h-10 w-1/8" src="https://media.discordapp.net/attachments/1164584907192938657/1170592901303124018/image_8.png?ex=65599a98&is=65472598&hm=74797897c1f89f538f522779938c1aa26fc4ddec605dc866cd0ac2ca1ae1e129&=&width=1440&height=398" alt="SNU Chennai" />
-            <h1 className="flex text-3xl font-bold tracking-[-0.05em] text-white sm:text-4xl sm:leading-[3.5rem] ml-auto">Physics Virtual Lab</h1>
+            <h1 className="flex text-lg font-bold tracking-[-0.05em] text-white sm:text-4xl md:text-3xl sm:leading-[3.5rem] ml-auto">Physics Virtual Lab</h1>
             <a href='/' className='flex ml-auto font-bold text-white text-2xl'>Home</a>
             <a href='/' className='flex font-bold mr-3 ml-3 text-white text-2xl'>Simulation</a>
         </header>
-        <div className='flex mt-auto'>
+        <div className='flex mt-5'>
             <button className='flex mx-auto bg-inherit border mb-4 text-xl border-white text-white text-center py-2 px-4' onClick={() => setButton1Prop(true)}>Aim</button>
             <Aim trigger={buttonProp1} setTrigger={setButton1Prop}>
                 <h3>Calculate (i) Planck’s constant and (ii) work function of the metal using photoelectric effect</h3>

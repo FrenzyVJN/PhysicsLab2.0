@@ -20,6 +20,16 @@
 }
     .close_btn{
     position: relative;
-
-
+}
+.animate-movingBg{
+    animation: movingBg infinite 5s alternate;
+    background-size: 200%;
+}
+@keyframes movingBg {
+    0%{
+        background-position: 0 0;
+    }
+    100%{
+        background-position: 200% 0;
+    }
 }

@@ -49,6 +49,7 @@ export default function Laboratory() {
     const [waveColor, setWaveColor] = useState('white');
     const [userVoltage, setUserVoltage] = useState(0);
     const [buttonProp4, setButton4Prop] = useState(false);
+    const [buttonProp5, setButton5Prop] = useState(false);
     const data = [
         { wavelength: 600, stoppingPotential: -0.30, inverseWavelength: 1.5 },
         { wavelength: 570, stoppingPotential: -0.45, inverseWavelength: 1.75 },
@@ -130,30 +131,30 @@ export default function Laboratory() {
             <table>
                 <thead>
                     <tr>
-                    <th className='text-center'>Wavelength</th>
-                    <th className='text-center px-5'>460</th>
-                    <th className='text-center px-5'>500</th>
-                    <th className='text-center px-5'>540</th>
-                    <th className='text-center px-5'>570</th>
-                    <th className='text-center px-5'>600</th>
+                    <th className='text-center text-white border'>Wavelength</th>
+                    <th className='text-center px-5 text-white border'>460</th>
+                    <th className='text-center px-5 text-white border'>500</th>
+                    <th className='text-center px-5 text-white border'>540</th>
+                    <th className='text-center px-5 text-white border'>570</th>
+                    <th className='text-center px-5 text-white border'>600</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                    <td className='text-center'>1/λ</td>
-                    <td className='text-center'>2.17</td>
-                    <td className='text-center'>2.00</td>
-                    <td className='text-center'>1.85</td>
-                    <td className='text-center'>1.75</td>
-                    <td className='text-center'>1.5</td>
+                    <td className='text-center text-white border'>1/λ</td>
+                    <td className='text-center text-white border'>2.17</td>
+                    <td className='text-center text-white border'>2.00</td>
+                    <td className='text-center text-white border'>1.85</td>
+                    <td className='text-center text-white border'>1.75</td>
+                    <td className='text-center text-white border'>1.5</td>
                     </tr>
                     <tr>
-                    <td>Stopping Potential (V)</td>
-                    <td className='text-center'>-0.92</td>
-                    <td className='text-center'>-0.76</td>
-                    <td className='text-center'>-0.62</td>
-                    <td className='text-center'>-0.46</td>
-                    <td className='text-center'>-0.30</td>
+                    <td className='text-center text-white border'>Stopping Potential (V)</td>
+                    <td className='text-center text-white border'>-0.92</td>
+                    <td className='text-center text-white border'>-0.76</td>
+                    <td className='text-center text-white border'>-0.62</td>
+                    <td className='text-center text-white border'>-0.46</td>
+                    <td className='text-center text-white border'>-0.30</td>
                     </tr>
                 </tbody>
             </table>
@@ -172,9 +173,16 @@ export default function Laboratory() {
                 </LineChart>
             </div>
             </Table>
-            {/*<Slider label="Voltage Adjustor" value={userVoltage} />*/}
+            <button className='flex mx-auto bg-inherit border text-xl border-white text-white text-center py-2 px-4' onClick={() => setButton5Prop(true)}>Result</button>
+            <div>
+                <Table trigger={buttonProp5} setTrigger={setButton5Prop}>
+                <div className='mt-5'>
+                    <h1></h1>
+                </div>
+                </Table>
+            </div>
         </div>
-        <div className='flex  justify-center flex-col items-center bg-teal-400 border-opacity-20 bg-opacity-10 border-white border-[5px] w-fit py-1 px-16 shadow-lg h-fit rounded-2xl '>
+        <div className='flex  justify-center flex-col items-center bg-teal-400 border-opacity-20 bg-opacity-20 border-white border-[5px] w-fit py-1 px-16 shadow-lg h-fit rounded-2xl '>
             <h1 className=" text-3xl font-bold tracking-[-0.04em] text-white sm:text-3xl sm:leading-[3.5rem]">Planck’s Constant Setup</h1>
             <div className="flex h-fit w-full justify-center items-center px-15 border-4 rounded-xl mb-5 border-blue-400">
                 <div className="h-4/5 w-1/3 ml-3 mr-auto rounded-full" id="frame"><Light color={waveColor}/></div>

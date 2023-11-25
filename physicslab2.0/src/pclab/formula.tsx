@@ -5,7 +5,7 @@ function Aim(props : any) {
         <div className="popup">
             <div className="popup-inner text-black bg-white flex mx-auto rounded-lg">
                 {props.children}
-                <button id="close_btn" className="flex ml-auto h-fit text-black" onClick={() => props.setTrigger(false)}><AiOutlineClose/></button>
+                <button id="close_btn" className="flex ml-auto h-fit bg-white text-black" onClick={() => props.setTrigger(false)}><AiOutlineClose/></button>
             </div>
         </div>
      ) : "";

@@ -74,14 +74,14 @@ button:focus-visible {
   }
 }
 .animate-movingBg{
-  animation: movingBg infinite 5s alternate;
-  background-size: 200%;
+  animation: movingBg infinite 50s forwards ;
+  background-size: 100% 500%;
 }
 @keyframes movingBg {
   0%{
       background-position: 0 0;
   }
   100%{
-      background-position: 200% 0 ;
+      background-position: 0 500% ;
   }
 }

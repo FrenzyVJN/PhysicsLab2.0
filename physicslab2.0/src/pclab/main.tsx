@@ -178,8 +178,8 @@ export default function Laboratory() {
             <div>
                 <Aim trigger={buttonProp5} setTrigger={setButton5Prop}>
                 <div className='mt-5'>
-                    <p className='text-white '>Planck's constant, h = 6.636X10<sup>-34</sup></p>
-                    <p className='text-white'>Work function of given metallic film, ɸ = </p>
+                    <p className='text-white '>Planck's constant, h = 6.636X10<sup>-34</sup>Js</p>
+                    <p className='text-white'>Work function of given metallic film, ɸ = 1.5 eV</p>
                 </div>
                 </Aim>
             </div>

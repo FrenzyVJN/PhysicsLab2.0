@@ -4,6 +4,7 @@ import Aim from './aim';
 import Formulas from './formula';
 import Table from './table';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import img from './phy.png'
 {/*}
 function Slider({label}: {label: string}) {
     return(
@@ -113,18 +114,18 @@ export default function Laboratory() {
         <header className="flex w-full items-center bg-gradient-to-tr  from-blue-700 py-3 to-blue-400 text-white p-1">
             <img className="flex h-10 w-1/8" src="https://media.discordapp.net/attachments/1164584907192938657/1170592901303124018/image_8.png?ex=65599a98&is=65472598&hm=74797897c1f89f538f522779938c1aa26fc4ddec605dc866cd0ac2ca1ae1e129&=&width=1440&height=398" alt="SNU Chennai" />
             <h1 className="flex text-lg font-bold tracking-[-0.05em] text-white sm:text-4xl md:text-3xl sm:leading-[3.5rem] ml-auto">Physics Virtual Lab</h1>
-            <a href='/' className='flex ml-auto font-bold text-white text-lg'>Home</a>
+            <a href='https://physics.frenzyvjn.tech/' className='flex ml-auto font-bold text-white text-lg'>Home</a>
             <a href='/' className='flex font-bold mr-3 ml-3 text-white text-lg'>Simulation</a>
         </header>
         <div className='flex mt-5 border border-white rounded-lg p-2 gap-3 mb-3'>
             <button className='flex mx-auto bg-inherit border text-xl border-white text-white text-center py-2 px-4' onClick={() => setButton1Prop(true)}>Aim</button>
             <Aim trigger={buttonProp1} setTrigger={setButton1Prop}>
-                <h3>Calculate (i) Planck’s constant and (ii) work function of the metal using photoelectric effect</h3>
+                <h3 className='text-white'>Calculate (i) Planck’s constant and (ii) work function of the metal using photoelectric effect</h3>
             </Aim>
             <button className='flex mx-auto bg-inherit border text-xl border-white text-white text-center py-2 px-4' onClick={() => setButton2Prop(true)}>Formula</button>
             <Formulas trigger={buttonProp2} setTrigger={setButton2Prop}>
-                <h3>Planck's Constant = (eV)/(λ)</h3>
-                <h3>Work Function = (eV)-(φ)</h3>
+                <p className='text-white'></p>
+                <img src={img}></img>
             </Formulas>
             <button className='flex mx-auto bg-inherit border text-xl border-white text-white text-center py-2 px-4' onClick={() => setButton3Prop(true)}>Table</button>
             <Table trigger={buttonProp3} setTrigger={setButton3Prop}>
@@ -175,11 +176,12 @@ export default function Laboratory() {
             </Table>
             <button className='flex mx-auto bg-inherit border text-xl border-white text-white text-center py-2 px-4' onClick={() => setButton5Prop(true)}>Result</button>
             <div>
-                <Table trigger={buttonProp5} setTrigger={setButton5Prop}>
+                <Aim trigger={buttonProp5} setTrigger={setButton5Prop}>
                 <div className='mt-5'>
-                    <h1></h1>
+                    <p className='text-white '>Planck's constant, h = 6.636X10<sup>-34</sup></p>
+                    <p className='text-white'>Work function of given metallic film, ɸ = </p>
                 </div>
-                </Table>
+                </Aim>
             </div>
         </div>
         <div className='flex  justify-center flex-col items-center bg-teal-400 border-opacity-20 bg-opacity-20 border-white border-[5px] w-fit py-1 px-16 shadow-lg h-fit rounded-2xl '>

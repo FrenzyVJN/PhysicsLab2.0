@@ -16,17 +16,27 @@ function Slider({label}: {label: string}) {
 }
 */}
 
-function Display({value, label}: {value:Number ; label:string}) {
+function Display1({value, label}: {value:Number ; label:string}) {
     return(
         <div className='h-fit w-fit border border-black rounded-2xl bg-gradient-to-t from-blue-400 to to-blue-700 justify-center mx-auto px-5 py-1'>
             <h1 className='text-2xl text-white'>{label}</h1>
             <div className='justify-center text-center text-white text-4xl text-bold'>
-                <h3>{value.toFixed(2)}</h3>
+                <h3>{value.toFixed(2)}A</h3>
             </div>
         </div>
     )
 }
 
+function Display2({value, label}: {value:Number ; label:string}) {
+    return(
+        <div className='h-fit w-fit border border-black rounded-2xl bg-gradient-to-t from-blue-400 to to-blue-700 justify-center mx-auto px-5 py-1'>
+            <h1 className='text-2xl text-white'>{label}</h1>
+            <div className='justify-center text-center text-white text-4xl text-bold'>
+                <h3>{value.toFixed(2)}V</h3>
+            </div>
+        </div>
+    )
+}
 function Light({color}: {color:string}) {
     const customStyles = {
         backgroundColor: color,
@@ -193,23 +203,25 @@ export default function Laboratory() {
             </div>
             <div className='inline-flex justify-center items-center'>
                 <div className=''>
-                    <Display value={0} label={"Current"}/>                    
+                    <Display1 value={0} label={"Current"}/>                    
                 {/*    <button className='flex mx-auto bg-inherit text-white text-center' onClick={handleToggle}><Btn1 label={currentVoltage?'Voltage':'Current'}/></button>
                     */}
                 </div>
                 <div className='px-4'>
-                    <Display value={(userVoltage)} label={"Voltage"}/>
+                    <Display2 value={(userVoltage)} label={"Voltage"}/>
                 </div>
 
                 
             </div>
-            <div className='inline-flex justify-center items-center py-2'>
-                <button className='bg-blue-500 text-white px-4 py-1 border border-black rounded-md mx-3' onClick={handleLightButtonClick460}>460</button>
-                <button className='bg-blue-500 px-4 text-white py-1 border border-black rounded-md mx-3' onClick={handleLightButtonClick500}>500</button>
-                <button className='bg-blue-500 px-4 text-white py-1 border border-black rounded-md mx-3' onClick={handleLightButtonClick540}>540</button>
-                <button className='bg-blue-500 px-4 text-white py-1 border border-black rounded-md mx-3' onClick={handleLightButtonClick570}>570</button>
-                <button className='bg-blue-500 px-4 text-white py-1 border border-black rounded-md mx-3' onClick={handleLightButtonClick635}>635</button>
-                
+            <div className='flex flex-col justify-center items-center py-1 border rounded-lg'>
+                <p className=''>Wavelength (in nm)</p>
+                <div>
+                    <button className='bg-blue-500 text-white px-4 py-1 border border-black rounded-md mx-3' onClick={handleLightButtonClick460}>460</button>
+                    <button className='bg-blue-500 px-4 text-white py-1 border border-black rounded-md mx-3' onClick={handleLightButtonClick500}>500</button>
+                    <button className='bg-blue-500 px-4 text-white py-1 border border-black rounded-md mx-3' onClick={handleLightButtonClick540}>540</button>
+                    <button className='bg-blue-500 px-4 text-white py-1 border border-black rounded-md mx-3' onClick={handleLightButtonClick570}>570</button>
+                    <button className='bg-blue-500 px-4 text-white py-1 border border-black rounded-md mx-3' onClick={handleLightButtonClick635}>635</button>
+                </div>
             </div>    
             <button className='bg-blue-500 text-white px-4 py-1 border border-black rounded-md mx-3' onClick={handleLightButtonClick}>Light</button>
 

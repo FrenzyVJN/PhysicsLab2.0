@@ -16,7 +16,8 @@ function Slider({label}: {label: string}) {
 }
 */}
 
-function Display1({value, label}: {value:Number ; label:string}) {
+
+function Display1({value, label}: {value:number ; label:string}) {
     return(
         <div className='h-fit w-fit border border-black rounded-2xl bg-gradient-to-t from-blue-400 to to-blue-700 justify-center mx-auto px-5 py-1'>
             <h1 className='text-2xl text-white'>{label}</h1>
@@ -27,7 +28,7 @@ function Display1({value, label}: {value:Number ; label:string}) {
     )
 }
 
-function Display2({value, label}: {value:Number ; label:string}) {
+function Display2({value, label}: {value:number ; label:string}) {
     return(
         <div className='h-fit w-fit border border-black rounded-2xl bg-gradient-to-t from-blue-400 to to-blue-700 justify-center mx-auto px-5 py-1'>
             <h1 className='text-2xl text-white'>{label}</h1>
